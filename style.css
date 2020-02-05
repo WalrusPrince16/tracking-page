@@ -1,0 +1,386 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --red: hsl(0, 100%, 68%);
+    --darkBlue: hsl(230, 29%, 20%);
+    --grayBlue: hsl(230, 11%, 40%);
+    --lightGrayBlue: hsl(231, 7%, 65%);
+    --veryLightGray: hsl(207, 33%, 95%);
+}
+
+body {
+    font-size: 18px;
+    font-family: 'Barlow', sans-serif;
+}
+
+h1, h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+}
+
+h1 {
+    font-weight: 700;
+}
+p, span {
+    color: var(--lightGrayBlue);
+}
+
+body {
+    text-transform: uppercase;
+}
+
+main {
+    display: flex;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    height: 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+}
+
+.description {
+    text-transform: none;
+}
+
+main {
+    flex-direction: column;
+}
+
+img {
+    max-width: 100%;
+}
+
+.schedule-demo, .new {
+    color: white;
+    margin-right: 2vh;
+}
+
+.schedule-demo {
+    background-color: var(--red);
+    border: none;
+}
+
+.new {
+    background-color: var(--darkBlue);
+}
+
+.align-text-center {
+    display: flex;
+    align-items: center;
+}
+
+#attribution {
+    font-size: 1.5vh;
+    text-align: center;
+    text-transform: none;
+    position: absolute;
+    bottom: 0;
+}
+
+@media (min-width: 375px) {
+    /* Remove Desktop Styles */ 
+    .desktop {display: none} 
+    .mobile {display: block}
+
+    /* Nav */
+
+    nav ul {
+        display: none;
+    }
+
+    #hamburger {
+        position: relative;
+        width: 3rem;
+        height: 3rem;
+    }
+
+    .line {
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 2px;
+        background-color: black;
+        transition: all cubic-bezier(0.6, -0.28, 0.735, 0.045) 0.35s;
+    }
+
+    .line:first-child {
+        top: 18%
+    }
+    
+    .line:nth-child(2) {
+        top: 48%
+    }
+    
+    .line:nth-child(3) {
+        top: 78%
+    }
+
+    /* Animate */
+
+    .x-icon .line:first-child {
+        transform: rotate(45deg);
+        top: 48%;
+    }
+    
+    .x-icon .line:nth-child(2),
+    .x-icon .line:nth-child(3) {
+        transform: rotate(-45deg);
+        top: 48%;
+    }
+
+    /* Mobile Nav */
+
+    .show-mobile-nav {
+        display: block;
+        position: absolute;
+        top: 7rem;
+        width: 70%;
+        text-align: center;
+        left: 15%;
+        right: 15%;
+        box-shadow: 0px 6px 13px 0px rgba(50, 50, 50, 0.52);
+        background-color: white;
+        animation-name: nav;
+        animation-duration: .25s;
+        animation-iteration-count: 1;
+        animation-fill-mode: both;
+    }
+
+    .show-mobile-nav li {
+        display: block;
+        margin: 2rem 0;
+        box-shadow: aliceblue;
+    }
+
+    .show-mobile-nav li.circle {
+        width: 80%;
+        margin: auto;
+        height: .1rem;
+        background-color: var(--veryLightGray);
+    }
+
+    @keyframes nav {
+        0% {
+            opacity: 0;
+        }
+        50% {
+            opacity: .5;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    /* Nav */
+
+    nav {
+        padding: 4rem 2rem;
+    }
+
+    /* Layout */
+    
+    .half-page {
+        min-height: 50vh;
+        max-height: none;
+        overflow-x: hidden;
+        position: relative;
+    }
+    .img-content {
+        order: 1;
+        position: relative;
+        padding-top: 7rem;
+        height: 50%;
+    }
+    .text-content {
+        order: 2;
+    }
+
+    /* Img */
+
+    .bg-curvy-gray {
+        width: 50%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 0;
+        background-color: var(--veryLightGray);
+        border-bottom-left-radius: 5rem;
+    }
+    .img-content img {
+        position: absolute;
+        right: -7%;
+    }
+
+    /* Text */
+
+    .text-content {
+        padding: 2rem;
+    }
+    h1 {
+        font-size: 2.25rem;
+        margin-top: 1.25rem;
+        line-height: 1;
+    }
+    p {
+        font-size: 1.25rem;
+        margin: 1.25rem 0;
+    }
+    .new {
+        border-radius: 1.5rem;
+        padding: .2rem .3rem;
+    }
+    .btns * {
+        font-size: .8rem;
+        width: 50%;
+        text-transform: inherit;
+        display: inline-block;
+    }
+    .btns {
+        text-align: center;
+        font-size: 1rem;
+    }
+    .schedule-demo {
+        padding: 1rem 0;
+        border-radius: .5rem;
+    }
+}
+
+/* Prevents the img from over-scaling */
+
+@media (min-width: 500px) and (max-width: 1023px) {
+    .img-content img {
+        position: static;
+        transform: scale(.75);
+    }
+}
+
+
+@media (min-width: 1024px) {
+
+    /* Layout */
+
+    main {
+        flex-direction: row;
+    }
+    .half-page {
+        min-height: 100vh;
+        width: 50%;
+        padding-top: 10rem;
+    }
+    .img-content {
+        order: 2;
+    }
+    .bg-curvy-gray {
+        width: 100%;
+        height: 50vh;
+    }
+    /* Img */
+    .img-content img {
+        transform: scale(1.5);
+        right: -30%;
+        top: 35%;
+    }
+
+    /* Text */
+
+    .text-content {
+        padding-top: 15rem;
+    }
+    h1 {
+        font-size: 3rem;
+    }
+    p, .btns {
+        font-size: 1.5rem;
+    }
+    .btns * {
+        width: 40%;
+    }
+    .btns span {
+        text-align: left;
+    }
+}
+
+
+@media (min-width: 1330px) {
+
+    .desktop {display: block} .mobile {display: none}
+   
+    /* General Styles */
+
+    .img-content img {
+        transform: scale(1.4);
+        top: 30%;
+        right: -25%;
+    }
+    h1 {
+        font-size: 4rem;
+    }
+    p {
+        width: 80%;
+        margin: 2rem 0 3rem 0;
+    }
+
+    /* Nav */
+    nav {
+        padding: 4rem 8rem;
+    }
+    nav ul {
+        display: flex;
+        width: 50%;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    li.circle {
+        height: .5rem;
+        width: .5rem;
+        background-color: var(--darkBlue);
+    }
+    nav ul li {
+        display: inline-block;
+    }
+
+    /* Text Content */
+    
+    .text-content {
+        padding-top: 12rem;
+        padding-left: 8rem;
+    }
+
+    /* Active States */
+
+    nav ul li:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+    nav ul li.circle:hover {
+        text-decoration: none;
+        cursor: default;
+    }
+    button:hover {
+        opacity: .8;
+        cursor: pointer;
+    }
+}
+
+@media (min-width: 1700px) {
+    h1 {
+        font-size: 5rem;
+    }
+    p, .btns {
+        font-size: 2.5rem;
+    }
+}
